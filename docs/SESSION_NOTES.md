@@ -1,3 +1,18 @@
+# Outfitly — session handoff (updated 28 Nov 2026, ~22:05 IST)
+
+## Session 28 Nov
+- Local release builds stall on this 7.7 GB PC (swap thrash). **Build in the cloud instead:** GitHub Actions `.github/workflows/build-android.yml` (Actions → Build Android → Run workflow; tick "aab" for the Play bundle). Secrets set: KEYSTORE_BASE64, KEYSTORE_PASSWORD, KEY_PASSWORD, KEY_ALIAS, SUPABASE_ANON_KEY.
+- Fixed release-only startup crash (R8 stripped `androidx.work.impl.WorkDatabase_Impl`): added `android/app/proguard-rules.pro` + `proguardFiles(...)` in app/build.gradle.kts.
+- Local `android/gradle.properties` heap lowered 8G → 2560m (CI bumps it to 6g).
+- Run 46163920987: signed APK + AAB in `build/cloud/` (symbols in `build/cloud/symbols`). APK installed on phone RZGYC13J23J, launches with no crash; UI not yet checked by hand.
+- Repo github.com/Ayush-srivastava504/Outfitly is **public** (artifacts downloadable 7 days). Owner was told to rotate the Supabase secret key + DB password (shared in chat).
+
+## Next
+1. Owner tests the app on the phone (community sign-in, try-on, backup).
+2. Upload `build/cloud/app-release.aab` to Play Console internal testing.
+3. StudyOS.
+
+---
 # Outfitly — session handoff (updated 20 Nov 2026, ~21:00 IST)
 
 ## Session 20 Nov evening — what changed
